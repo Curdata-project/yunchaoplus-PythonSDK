@@ -65,14 +65,14 @@ class yunchaoplusRequestObject():
 
         if PY3:
             payload = {
-                "version": "V1",
+                "version": 1,
                 "payload": ciphertext.decode(),
                 "Pk1": Pk1.decode(),
                 "sign": Sign(self.Skc, self.Pkc, ciphertext+Pk1, R).decode()
             }
         else:
             payload = {
-                "version": "V1",
+                "version": 1,
                 "payload": ciphertext,
                 "Pk1": Pk1,
                 "sign": Sign(self.Skc, self.Pkc, ciphertext+Pk1, R)
