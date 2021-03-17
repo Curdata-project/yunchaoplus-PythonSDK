@@ -10,7 +10,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(BASE_DIR)
 
 
-from tools.send import yunchaoplusRequestObject,yixuan_yunchaoplusRequestObject
+from tools.send import yunchaoplusRequestObject,GET_yunchaoplusRequestObject
 from os import urandom
 from base64 import b64encode
 from settings import *
@@ -64,8 +64,6 @@ def delete_settles(wallet_id,settles_id):
 
 
 class yixuan_yunchaoplus_wallet(yunchaoplusRequestObject):
-	def __init__(self, api_key, pk0_path, pkc_path, skc_path):
-		yunchaoplusRequestObject.__init__(self, api_key, pk0_path, pkc_path, skc_path)
 
 	#创建钱包对象
 	def create_wallet_obj(self,request_data):
@@ -80,9 +78,7 @@ class yixuan_yunchaoplus_wallet(yunchaoplusRequestObject):
 		return self.send(request_data, 'POST', 'https://%s/wallets/%s/settles' % (WALLET_DNS, wallet_id))
 
 
-class yixuan_yunchaoplus_wallet_2(yixuan_yunchaoplusRequestObject):
-	def __init__(self, api_key, pk0_path, pkc_path, skc_path):
-		yunchaoplusRequestObject.__init__(self, api_key, pk0_path, pkc_path, skc_path)
+class yixuan_yunchaoplus_wallet_2(GET_yunchaoplusRequestObject):
 	
 	#通过审核钱包对象 PUT $endpoint/wallets/${id}/review
 	def review_wallet_obj(self, wallet_id):

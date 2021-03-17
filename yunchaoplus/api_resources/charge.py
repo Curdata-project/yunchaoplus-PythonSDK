@@ -1,4 +1,3 @@
-
 # -*- coding: utf-8 -*-
 # author: 逸轩
 # desc: 云钞plus支付
@@ -40,8 +39,6 @@ def cancel_charge(charge_id):
 		
 
 class yixuan_yunchaoplus_charge(yunchaoplusRequestObject):
-	def __init__(self, api_key, pk0_path, pkc_path, skc_path):
-		yunchaoplusRequestObject.__init__(self, api_key, pk0_path, pkc_path, skc_path)
 
 	#创建支付对象
 	def create_charge_obj(self,request_data):
@@ -51,9 +48,7 @@ class yixuan_yunchaoplus_charge(yunchaoplusRequestObject):
 		return self.send(request_data, 'POST',url)
 
 
-class yixuan_yunchaoplus_charge_2(yixuan_yunchaoplusRequestObject):
-	def __init__(self, api_key, pk0_path, pkc_path, skc_path):
-		yunchaoplusRequestObject.__init__(self, api_key, pk0_path, pkc_path, skc_path)
+class yixuan_yunchaoplus_charge_2(GET_yunchaoplusRequestObject):
 
 	#撤销支付对象
 	def cancel_charge_obj(self, charge_id):

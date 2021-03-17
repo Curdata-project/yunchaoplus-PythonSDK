@@ -9,7 +9,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(BASE_DIR)
 
 
-from tools.send import yunchaoplusRequestObject,yixuan_yunchaoplusRequestObject
+from tools.send import yunchaoplusRequestObject,GET_yunchaoplusRequestObject
 from os import urandom
 from base64 import b64encode
 from settings import *
@@ -37,8 +37,6 @@ def update_transfer(request_data,wallet_id,transfer_id):
 
 
 class yixuan_yunchaoplus_transfer(yunchaoplusRequestObject):
-	def __init__(self, api_key, pk0_path, pkc_path, skc_path):
-		yunchaoplusRequestObject.__init__(self, api_key, pk0_path, pkc_path, skc_path)
 
 	#创建转账对象 POST $endpoint/wallets/${wallet_id}/transfers
 	def create_transfer_obj(self,request_data,wallet_id):
@@ -50,9 +48,7 @@ class yixuan_yunchaoplus_transfer(yunchaoplusRequestObject):
 
 
 
-class yixuan_yunchaoplus_transfer_2(yixuan_yunchaoplusRequestObject):
-	def __init__(self, api_key, pk0_path, pkc_path, skc_path):
-		yunchaoplusRequestObject.__init__(self, api_key, pk0_path, pkc_path, skc_path)
+class yixuan_yunchaoplus_transfer_2(GET_yunchaoplusRequestObject):
 
 	#查询转账对象  GET $endpoint/wallets/${wallet_id}/transfers/${id}
 	def query_transfer_obj(self,wallet_id, id):

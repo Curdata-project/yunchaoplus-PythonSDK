@@ -9,7 +9,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(BASE_DIR)
 
 
-from tools.send import yunchaoplusRequestObject,yixuan_yunchaoplusRequestObject
+from tools.send import yunchaoplusRequestObject,GET_yunchaoplusRequestObject
 from os import urandom
 from base64 import b64encode
 from settings import *
@@ -32,8 +32,6 @@ def query_refundlist(charge_id,args):
 
 
 class yixuan_yunchaoplus_refund(yunchaoplusRequestObject):
-	def __init__(self, api_key, pk0_path, pkc_path, skc_path):
-		yunchaoplusRequestObject.__init__(self, api_key, pk0_path, pkc_path, skc_path)
 
 	#创建退款对象 POST $endpoint/charges/{id}/refunds
 	def create_refund_obj(self,request_data, charge_id):
@@ -43,10 +41,8 @@ class yixuan_yunchaoplus_refund(yunchaoplusRequestObject):
 
 
 
-class yixuan_yunchaoplus_refund_2(yixuan_yunchaoplusRequestObject):
-	def __init__(self, api_key, pk0_path, pkc_path, skc_path):
-		yunchaoplusRequestObject.__init__(self, api_key, pk0_path, pkc_path, skc_path)
-
+class yixuan_yunchaoplus_refund_2(GET_yunchaoplusRequestObject):
+	
 	#查询退款对象 GET $endpoint/charges/{charge_id}/refunds/{refund_id}
 	def query_refund_obj(self, charge_id, refund_id):
 		url = 'https://%s/charges/%s/refunds/%s' % (REFUND_DNS, charge_id, refund_id)

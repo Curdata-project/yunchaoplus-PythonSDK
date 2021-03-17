@@ -9,7 +9,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(BASE_DIR)
 
 
-from tools.send import yunchaoplusRequestObject,yixuan_yunchaoplusRequestObject
+from tools.send import yunchaoplusRequestObject,GET_yunchaoplusRequestObject
 from os import urandom
 from base64 import b64encode
 from settings import *
@@ -38,8 +38,6 @@ def query_signedlist(wallet_id, args):
 
 
 class yixuan_yunchaoplus_agent(yunchaoplusRequestObject):
-	def __init__(self, api_key, pk0_path, pkc_path, skc_path):
-		yunchaoplusRequestObject.__init__(self, api_key, pk0_path, pkc_path, skc_path)
 
 	#创建签约对象  POST $endpoint/wallets/${wallet_id}/agents
 	def create_agent_obj(self,request_data,wallet_id):
@@ -48,9 +46,7 @@ class yixuan_yunchaoplus_agent(yunchaoplusRequestObject):
 		return self.send(request_data, 'POST', url)
 	
 
-class yixuan_yunchaoplus_agent_2(yixuan_yunchaoplusRequestObject):
-	def __init__(self, api_key, pk0_path, pkc_path, skc_path):
-		yunchaoplusRequestObject.__init__(self, api_key, pk0_path, pkc_path, skc_path)
+class yixuan_yunchaoplus_agent_2(GET_yunchaoplusRequestObject):
 
 	#查询签约对象  GET $endpoint/wallets/${wallet_id}/agents/${id}
 	def query_agent_obj(self,wallet_id, id):

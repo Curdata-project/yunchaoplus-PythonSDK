@@ -6,8 +6,7 @@
 import os
 import sys
 import warnings
-from version import VERSION  # yunchaoplus 版本号
-
+from version import VERSION
 
 
 path, script = os.path.split(sys.argv[0])
@@ -22,19 +21,9 @@ if sys.version_info < (2, 6):
     install_requires.append('ssl')
 else:
     install_requires.append('requests >= 0.8.8')
-    install_requires.append('pycryptodome >= 3.4.7')
     # install_requires.append('pyOpenSSL==20.0.1')
 
-install_requires.append('cffi==1.14.5')
-install_requires.append('six==1.15.0')
-install_requires.append('urllib3==1.26.3')
-install_requires.append('chardet==4.0.0')
-install_requires.append('idna==2.10')
 install_requires.append('PyNaCl==1.4.0')
-install_requires.append('Flask==1.1.2')
-install_requires.append('psycopg2==2.8.6')
-install_requires.append('Flask_SQLAlchemy==2.4.4')
-install_requires.append('setuptools==53.0.0')
 
 try:
     from setuptools import setup
@@ -45,11 +34,6 @@ except ImportError:
 
 PY2 = sys.version_info[0] == 2
 PY3 = sys.version_info[0] == 3
-
-if PY2:
-    install_requires.append('python2_secrets==1.0.5')
-else:
-    install_requires.append('secrets')
 
 if PY2:
 	with open('LONG_DESCRIPTION.rst') as f:
@@ -79,7 +63,7 @@ setup(
     author='yixuan',
     author_email='',
     url='https://github.com/Curdata-project/yunchaoplus_auth/tree/SDK-Python',
-    package_data={'yunchaoplus': ['util/libderive_key_32.dll','util/libderive_key_64.dll','util/libderive_key_64.so','util/libderive_key_32.so']},
+    package_data={'yunchaoplus': []},
     install_requires=install_requires,
     classifiers=[
         "Development Status :: 5 - Production/Stable",
