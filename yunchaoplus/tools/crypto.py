@@ -6,6 +6,12 @@ from nacl.public import PrivateKey as PrivateKeyNaCl
 from nacl.public import Box as BoxNaCl
 from nacl.encoding import Base64Encoder
 
+# Pk 公钥 BASE64编码
+# Sk 私钥 BASE64编码
+# plaintext 明文数据 即原请求body做JSON化得到的字符串
+# nonce 加密随机数 BASE64编码
+# ciphertext 密文数据 BASE64编码
+
 def Encrypt_NaCl(Pk, Sk, plaintext):
     Sk = PrivateKeyNaCl(Sk, encoder=Base64Encoder)
     Pk =  PublicKeyNaCl(Pk, encoder=Base64Encoder)
